@@ -7,13 +7,13 @@ df = pd.read_csv("topics1.csv")
 pdf.set_line_width(0.5)
 
 
-def draw_lines(pdf, start_y, line_spacing=10):
+def draw_lines(pdf1, begin_y, line_spacing=10):
     page_height = 297
-    num_lines = int((page_height - start_y) / line_spacing)
+    num_lines = int((page_height - begin_y) / line_spacing)
 
     for y in range(num_lines):
-        current_y = start_y + y * line_spacing
-        pdf.line(x1=10, y1=current_y, x2=200, y2=current_y)
+        current_y = begin_y + y * line_spacing
+        pdf1.line(x1=10, y1=current_y, x2=200, y2=current_y)
 
 
 for index, row in df.iterrows():
@@ -33,6 +33,6 @@ for index, row in df.iterrows():
 
     for i in range(row["Pages"] - 1):
         pdf.add_page()
-        draw_lines(pdf, start_y=10)
+        draw_lines(pdf, begin_y=10)
 
 pdf.output("output.pdf")
